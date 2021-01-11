@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(133 208 187);
+        }
+        
+        .backgroud {
+            background-image: url("background.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 400px;
+            background-size: cover;
+            margin: auto;
+        }
+        
+        .backgroud img {
+            position: relative;
+            top: 200px;
+        }
+        
+        .shape {
+            width: 250px;
+            height: 150px;
+        }
+        
+        .Buttons {
+            width: 40%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        .Buttons button {
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #121113;
+            color: white;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function() {
+            var shapeElement = document.querySelector(".shape");
+            var frames = [{
+                transform: "translateX(0px)"
+            }, {
+                transform: "translateX(1400px)"
+            }, ];
+
+            var timing = {
+                duration: 5000,
+                iterations: Infinity,
+                //direction: "alternate"
+            }
+            var shapeAnimate = shapeElement.animate(frames, timing);
+
+            document.querySelector(".play").addEventListener("click", function() {
+                shapeAnimate.play();
+            });
+            document.querySelector(".pause").addEventListener("click", function() {
+                shapeAnimate.pause();
+            });
+            document.querySelector(".reverse").addEventListener("click", function() {
+                shapeAnimate.reverse();
+            });
+            document.querySelector(".updatePlaybackRate").addEventListener("click", function() {
+                shapeAnimate.updatePlaybackRate(shapeAnimate.playbackRate * 1.2);
+            });
+            document.querySelector(".slowPlaybackRate").addEventListener("click", function() {
+                shapeAnimate.updatePlaybackRate(shapeAnimate.playbackRate / 1.2);
+            });
+
+
+        })
+    </script>
+</head>
+
+<body>
+
+    <div class="backgroud">
+        <img class="shape" src="redCar.png">
+    </div>
+    <div class="Buttons">
+        <button class="play">Play</button>
+        <button class="pause">Pause</button>
+        <button class="reverse">Reverse</button>
+        <button class="updatePlaybackRate">Fast Speed</button>
+        <button class="slowPlaybackRate">Slow Speed</button>
+
+    </div>
+
+</body>
+
+</html>
